@@ -1,4 +1,4 @@
-package com.many_to_many_uni.entity;
+package com.many_to_many_bi.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

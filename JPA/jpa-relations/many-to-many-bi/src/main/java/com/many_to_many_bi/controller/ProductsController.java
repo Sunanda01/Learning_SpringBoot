@@ -1,7 +1,7 @@
-package com.many_to_many_uni.controller;
+package com.many_to_many_bi.controller;
 
-import com.many_to_many_uni.entity.Products;
-import com.many_to_many_uni.repository.ProductRepo;
+import com.many_to_many_bi.entity.Products;
+import com.many_to_many_bi.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

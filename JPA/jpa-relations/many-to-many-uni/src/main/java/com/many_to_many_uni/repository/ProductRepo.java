@@ -1,10 +1,10 @@
-package com.many_to_one_uni.repository;
+package com.many_to_many_uni.repository;
 
 
-import com.many_to_one_uni.entity.Users;
+import com.many_to_many_uni.entity.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepo extends JpaRepository<Users,Long> {
+public interface ProductRepo extends JpaRepository<Products,Long> {
 }

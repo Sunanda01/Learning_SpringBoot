@@ -1,7 +1,7 @@
-package com.many_to_one_uni.controller;
+package com.many_to_many_uni.controller;
 
-import com.many_to_one_uni.entity.Users;
-import com.many_to_one_uni.repository.UserRepo;
+import com.many_to_many_uni.entity.Products;
+import com.many_to_many_uni.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,20 +14,20 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class UserController {
-    private final UserRepo repo;
+public class ProductsController {
+    private final ProductRepo productRepo;
 
     @GetMapping("/")
     public ResponseEntity<List> getAllUser(){
-        List<Users> usersList =repo.findAll();
+        List<Products> usersList =productRepo.findAll();
         if(usersList.isEmpty())
             return ResponseEntity.noContent().build();
         return ResponseEntity.ok(usersList);
     }
 
     @PostMapping("/")
-    public ResponseEntity<Users> createUser(@RequestBody Users user){
-        Users saved=repo.save(user);
+    public ResponseEntity<Products> createUser(@RequestBody Products products){
+        Products saved=productRepo.save(products);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 }

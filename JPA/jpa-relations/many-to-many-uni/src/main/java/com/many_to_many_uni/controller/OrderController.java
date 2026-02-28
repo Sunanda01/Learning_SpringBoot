@@ -1,27 +1,31 @@
-package com.many_to_one_uni.controller;
+package com.many_to_many_uni.controller;
 
-import com.many_to_one_uni.entity.Order;
-import com.many_to_one_uni.entity.Users;
-import com.many_to_one_uni.repository.OrderRepo;
-import com.many_to_one_uni.repository.UserRepo;
+import com.many_to_many_uni.entity.Order;
+import com.many_to_many_uni.entity.Products;
+import com.many_to_many_uni.repository.OrderRepo;
+import com.many_to_many_uni.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderRepo orderRepo;
-    private final UserRepo userRepo;
-    @PostMapping("/order/{id}")
-    public ResponseEntity<Order> createUser(@PathVariable("id") Long id, @RequestBody Order order){
-        Users users=userRepo.findById(id).get();
-        order.setUsers(users);
-        orderRepo.save(order);
-        return ResponseEntity.status(HttpStatus.CREATED).body(order);
+    private final ProductRepo productRepo;
+
+    @PostMapping("/order")
+    public Order createOrder(@RequestBody Order order) {
+
+        List<Long> productIds = order.getProductsList()
+                .stream()
+                .map(Products::getId)
+                .toList();
+        List<Products> managedProducts = productRepo.findAllById(productIds);
+        order.setProductsList(managedProducts);
+        return orderRepo.save(order);
     }
     @GetMapping("/order")
     public ResponseEntity<List> getAllOrder(){

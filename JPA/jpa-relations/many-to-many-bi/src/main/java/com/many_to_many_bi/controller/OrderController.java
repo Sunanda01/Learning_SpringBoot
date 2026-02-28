@@ -1,14 +1,18 @@
-package com.many_to_many_uni.controller;
+package com.many_to_many_bi.controller;
 
-import com.many_to_many_uni.entity.Order;
-import com.many_to_many_uni.entity.Products;
-import com.many_to_many_uni.repository.OrderRepo;
-import com.many_to_many_uni.repository.ProductRepo;
+
+import com.many_to_many_bi.entity.Order;
+import com.many_to_many_bi.entity.Products;
+import com.many_to_many_bi.repository.OrderRepo;
+import com.many_to_many_bi.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor

@@ -1,10 +1,13 @@
-package com.many_to_one_uni.entity;
+package com.many_to_many_uni.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -15,9 +18,11 @@ import lombok.Setter;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String productName;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id_fk",referencedColumnName = "userId")
-    private Users users;
+    private Long orderNo;
+    @ManyToMany
+    @JoinTable(
+            name="order_product",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Products> productsList=new ArrayList<>();
 }
