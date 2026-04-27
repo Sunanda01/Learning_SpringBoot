@@ -88,13 +88,23 @@ com.CommerceCore
 
 ### Products
 
+#### Params 
+| Param  | Description |
+|--------|------------|
+| keyword | Product name|
+| category | Category |
+| minPrice | Minimum Price |
+| maxPrice | Maximum Price |
+| sortBy | Sorting field |
+| direction | asc/desc |
+
 | Method | Endpoint | Description |
 |--------|---------|------------|
 | POST | /api/products | Create product (ADMIN) |
 | GET | /api/products?page=page_no&size=number&sortBy=field&direction=asc | Get all products |
-| GET | /api/products/{productId} | Get product by product id|
-| GET | /api/products/filter?name=product_name&category=category_name&sortBy=field&direction=asc | Get filtered product (static query)
-| GET | api/products/specification?name=product_name&category=category_name&sortBy=field&direction=asc | Get filtered product (dynamic query)
+| GET | /api/products/{productId} | Get product by product id |
+| GET | /api/products/filter?name=Samsung 300W Charger&category=C Type Charger&sortBy=price&direction=asc | Get filtered product (static query) |
+| GET | /api/products/specification?category=Mobile&sortBy=price&direction=desc | Get filtered product (dynamic query) |
 
 ### Carts
 
